@@ -1,3 +1,19 @@
+# Nick + Casey + Bryan repo
+
+This is a temporary repo to collaborate on optimizing the streamk kernel in the composable kernel library. It consists of the entire library pulled from github and compiled for the M100 remote systems were using in the class. The instructions I had werent quite right, so heres how to use it:
+
+To run the program, navigate to the build directory and run <bin/example_gemm_xdl_streamk 1 2 1> in your terminal. I looked into it, and the current config files run the 5x warmups then 10x tests automatically. 
+
+If you modify the files, to recompile:
+
+Navigate to the build directory and run <../script/cmake-ck-dev.sh ..>
+
+Then run <make example_gemm_xdl_streamk>
+
+Profile it by running <rocprof --hip-trace example_gemm_xdl_streamk> in the build/bin directory. This will generate a file called results.json . Right click that file then download it to your local machine, then upload it at https://ui.perfetto.dev by selecting "Open Trace File" 
+
+
+
 # Composable Kernel
 
 The Composable Kernel (CK) library provides a programming model for writing performance-critical
