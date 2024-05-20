@@ -12,6 +12,17 @@ Then run <make example_gemm_xdl_streamk>
 
 Profile it by running <rocprof --hip-trace example_gemm_xdl_streamk> in the build/bin directory. This will generate a file called results.json . Right click that file then download it to your local machine, then upload it at https://ui.perfetto.dev by selecting "Open Trace File" 
 
+Structure of the program:
+
+1. /example/01_gemm/gemm_xdl_streamk.cpp is the executable, and basically just takes a bunch of parameters and starts everything else.
+2. /example/01_gemm/run_gemm_example.ic is kind of like the test file that builds all the test data and outputs measurements
+3. /include/ck/tensor_operation/gpu/device/impl/device_gemm_xdl_streamk.hpp is the logic to invoke the kernels, but not the actual kernel logic
+4. /include/ck/tensor_operation/grid/gridewise_gemm_xdlops_streamk.hpp is the actual kernel logic.
+5. /include/ck/host_utility/kernel_launch.hpp is the logic that launches the kernels
+6. /include/ck/stream_config.hpp is a file where you can change the # of warmups/number of times it runs (I set it to 5x warmups and 10x runs per the instructions)
+
+
+
 
 
 # Composable Kernel
