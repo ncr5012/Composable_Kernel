@@ -8,7 +8,7 @@ If you modify the files, to recompile:
 
 Navigate to the build directory and run <../script/cmake-ck-dev.sh ..>
 
-Then run <make example_gemm_xdl_streamk>
+Then run make example_gemm_xdl_streamk <make example_gemm_xdl_streamk>
 
 Profile it by running <rocprof --hip-trace example_gemm_xdl_streamk> in the build/bin directory. This will generate a file called results.json . Right click that file then download it to your local machine, then upload it at https://ui.perfetto.dev by selecting "Open Trace File" 
 
